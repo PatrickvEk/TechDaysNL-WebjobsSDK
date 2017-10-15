@@ -18,6 +18,9 @@ namespace WindowsService
         /// </summary>
         static void Main()
         {
+            //make sure a webjobsSDK service is set to auto-restart (first occurrence, second occurrence, subsequent occurence)
+            //this ensures reliability when outages occur (e.g. internet connection)
+
             ServiceBase[] ServicesToRun;
             ServicesToRun = new ServiceBase[]
             {
