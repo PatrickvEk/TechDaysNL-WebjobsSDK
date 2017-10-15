@@ -20,7 +20,8 @@ namespace WindowsService
         public Service1()
         {
             InitializeComponent();
-            jobHost = ConfigFactory.CreateConfig();
+            JobHostConfiguration config = ConfigFactory.CreateConfig();
+            jobHost = new JobHost(config);
         }
 
         protected override void OnStart(string[] args)
