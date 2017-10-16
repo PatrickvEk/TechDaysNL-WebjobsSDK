@@ -95,6 +95,7 @@
     <Compile Include="ConfigFactory.cs" />
     <Compile Include="Demos\InteractWithAzure.cs" />
     <Compile Include="Demos\RemoteIvocation.cs" />
+    <Compile Include="Extras\ServiceBusExamples.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Demos\OfflineDemo.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

@@ -1,7 +1,9 @@
 ﻿namespace WebJob1
 {
+    using System;
     using Microsoft.Azure.WebJobs;
     using Microsoft.Azure.WebJobs.Extensions.Files;
+    using Microsoft.Azure.WebJobs.ServiceBus;
 
     public class ConfigFactory
     {
@@ -32,10 +34,34 @@
             config.UseFiles(filesConfig);
             config.UseTimers();
 
-            config.UseServiceBus();
-
             //lots of these extensions can be found on the internet on places like nuget
             //https://www.nuget.org/packages?q=WebJobs.Extensions
+
+            //used for local development without accidently sharing secrets
+            string storageString = Environment.GetEnvironmentVariable("AzureStorageAccount");
+            if (!string.IsNullOrWhiteSpace(storageString))
+            {
+                config.DashboardConnectionString = storageString;
+                config.StorageConnectionString = storageString;
+            }
+
+
+            //find servicebusString in Environment variable, otherwise find it in App.config
+            string serviceBusConnection = Environment.GetEnvironmentVariable("AzureServiceBus");
+            if (!string.IsNullOrWhiteSpace(serviceBusConnection))
+            {
+                ServiceBusConfiguration sbConfig = new ServiceBusConfiguration
+                {
+                    ConnectionString = serviceBusConnection
+                    //set other options if you like
+                };
+
+                config.UseServiceBus(sbConfig);
+            }
+            else
+            {
+                config.UseServiceBus();
+            }
 
             return config;
         }

@@ -1,15 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.ServiceProcess;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.ServiceProcess;
 
 namespace WindowsService
 {
-    using Microsoft.Azure.WebJobs;
     using ServiceProcess.Helpers;
-    using WebJob1;
 
     static class Program
     {
