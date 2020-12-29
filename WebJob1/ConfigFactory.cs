@@ -27,7 +27,7 @@
             //normally use AppSetting and ConfigManager to get paths here.
             FilesConfiguration filesConfig = new FilesConfiguration
                 {
-                    RootPath = @"C:\Users\p.vanek\Desktop\TechDays\FileWatch"
+                    RootPath = @"."
                 };
            
             //enable what you like to use
@@ -39,13 +39,18 @@
 
             //used for local development without accidently sharing secrets
             string storageString = Environment.GetEnvironmentVariable("AzureStorageAccount");
-            if (!string.IsNullOrWhiteSpace(storageString))
+            
+            //set to null to disable azure dashboard connection
+            // storageString = null;
+                
+            config.DashboardConnectionString = storageString;
+            config.StorageConnectionString = storageString;
+            
+            if(storageString == null)
             {
-                config.DashboardConnectionString = storageString;
-                config.StorageConnectionString = storageString;
+                config.HostId = Guid.NewGuid().ToString("N");
             }
-
-
+            
             //find servicebusString in Environment variable, otherwise find it in App.config
             string serviceBusConnection = Environment.GetEnvironmentVariable("AzureServiceBus");
             if (!string.IsNullOrWhiteSpace(serviceBusConnection))
@@ -57,10 +62,6 @@
                 };
 
                 config.UseServiceBus(sbConfig);
-            }
-            else
-            {
-                config.UseServiceBus();
             }
 
             return config;

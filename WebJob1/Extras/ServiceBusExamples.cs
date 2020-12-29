@@ -7,8 +7,7 @@
     using Microsoft.ServiceBus.Messaging;
 
     //remove attribute to enable examples
-    //[Disable]
-    public class ServiceBusSessionExamples
+   public class ServiceBusSessionExamples
     {
         //IMPORTANT: make sure responsequeue has "Requires sessions" enabled. (Might require Standard pricing tier for azure service bus)
 
@@ -23,7 +22,6 @@
 
         //currently there is no implementation to receive from a session queue, only to send to a session.
         //feature request is here https://github.com/Azure/azure-webjobs-sdk/issues/529
-
 
         //handle general request and respond to session (this could run on a clientmachine for example)
         public static void HandleRequestAndRespondWithSession(
@@ -49,7 +47,7 @@
             };
         }
 
-
+        [Disable]
         //generates requests for demo purposes
         public static void GenerateRequests(
             [TimerTrigger("00:01:00", RunOnStartup = true, UseMonitor = false)] TimerInfo timer,

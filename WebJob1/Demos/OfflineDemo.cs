@@ -8,20 +8,21 @@
 
     public class OfflineDemo
     {
-        public static void ProcessFileOffline(
-            [FileTrigger(@"TextFolder\{fileName}", "*", 
-            WatcherChangeTypes.Created, autoDelete: false)]
-            TextReader fileInput, string fileName,
-
-            TextWriter log)
-        {
-            log.WriteLine($"Processing file: {fileName}");
-
-            //do your processing here
-            string contents = fileInput.ReadToEnd();
-
-            log.WriteLine($"Contents: {contents}");
-        }
+        // [Disable]
+        // public static void ProcessFileOffline(
+        //     [FileTrigger(@"TextFolder\{fileName}", "*", 
+        //     WatcherChangeTypes.Created, autoDelete: false)]
+        //     TextReader fileInput, string fileName,
+        //
+        //     TextWriter log)
+        // {
+        //     log.WriteLine($"Processing file: {fileName}");
+        //
+        //     //do your processing here
+        //     string contents = fileInput.ReadToEnd();
+        //
+        //     log.WriteLine($"Contents: {contents}");
+        // }
 
 
         //Ctrl+T webjobs.*triggerAttribute
@@ -33,8 +34,7 @@
         private const string CronScheduleEvery5Minutes = "0 */5 * * * *";
         private const string Every5SecondTimeout = "00:00:05";
 
-        [Disable]
-        public static async Task ProcessTimer(
+       public static async Task ProcessTimer(
             [TimerTrigger(Every5SecondTimeout, RunOnStartup = false, UseMonitor = false)] TimerInfo timer, 
             TextWriter logger,
             CancellationToken hostsWantsToShutdown)
@@ -48,7 +48,5 @@
           
             logger.WriteLine("Logging something here");
         }
-
-
     }
 }

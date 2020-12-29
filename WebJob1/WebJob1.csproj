@@ -93,9 +93,6 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ConfigFactory.cs" />
-    <Compile Include="Demos\InteractWithAzure.cs" />
-    <Compile Include="Demos\RemoteIvocation.cs" />
-    <Compile Include="Extras\ServiceBusExamples.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Demos\OfflineDemo.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -103,6 +100,9 @@
   <ItemGroup>
     <None Include="App.config" />
     <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Extras\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

@@ -8,6 +8,7 @@
         //Ctrl+T Azure.webjobs.*Attribute
 
         //demonstration of output bindings
+        [Disable]
         public static void FileUploadToAzure(
             [FileTrigger(@"Upload\{fileName}", "*")] Stream localInput, string fileName,
             [Blob(@"uploads/{fileName}", FileAccess.Write)] Stream azureOutput,
