@@ -1,8 +1,8 @@
-﻿namespace WebJob1.Demos
-{
-    using System.IO;
-    using Microsoft.Azure.WebJobs;
+﻿using System.IO;
+using Microsoft.Azure.WebJobs;
 
+namespace WebJob1.Demos
+{
     public class InteractWithAzure
     {
         //Ctrl+T Azure.webjobs.*Attribute

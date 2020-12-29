@@ -1,10 +1,12 @@
-﻿namespace WebJob1.Extras
+﻿using System;
+using System.IO;
+using System.Threading;
+using Microsoft.Azure.WebJobs;
+using Microsoft.ServiceBus.Messaging;
+
+namespace WebJob1.Extras
 {
-    using System;
-    using System.IO;
-    using System.Threading;
-    using Microsoft.Azure.WebJobs;
-    using Microsoft.ServiceBus.Messaging;
+
 
     //remove attribute to enable examples
    public class ServiceBusSessionExamples

@@ -1,11 +1,11 @@
-﻿namespace WebJob1.Demos
-{
-    using System;
-    using System.IO;
-    using System.Threading;
-    using System.Threading.Tasks;
-    using Microsoft.Azure.WebJobs;
+﻿using System;
+using System.IO;
+using System.Threading;
+using System.Threading.Tasks;
+using Microsoft.Azure.WebJobs;
 
+namespace WebJob1.Demos
+{
     public class OfflineDemo
     {
         // [Disable]
@@ -35,14 +35,14 @@
         private const string Every5SecondTimeout = "00:00:05";
 
        public static async Task ProcessTimer(
-            [TimerTrigger(Every5SecondTimeout, RunOnStartup = false, UseMonitor = false)] TimerInfo timer, 
+            [TimerTrigger(Every5SecondTimeout, RunOnStartup = true, UseMonitor = true)] TimerInfo timer, 
             TextWriter logger,
             CancellationToken hostsWantsToShutdown)
         {
             logger.WriteLine("Do something here");
-
+       
             //Execute your code here.
-
+       
             TimeSpan timeout = TimeSpan.FromSeconds(1);
             await Task.Delay(timeout, hostsWantsToShutdown);
           

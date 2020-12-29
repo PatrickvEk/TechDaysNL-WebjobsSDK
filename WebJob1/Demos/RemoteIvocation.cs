@@ -1,11 +1,11 @@
-﻿namespace WebJob1.Demos
-{
-    using System.Diagnostics;
-    using System.IO;
-    using Microsoft.Azure.WebJobs;
-    using Microsoft.Azure.WebJobs.Host;
-    using Newtonsoft.Json;
+﻿using System.Diagnostics;
+using System.IO;
+using Microsoft.Azure.WebJobs;
+using Microsoft.Azure.WebJobs.Host;
+using Newtonsoft.Json;
 
+namespace WebJob1.Demos
+{
     public class RemoteIvocation
     {
         [NoAutomaticTrigger]
